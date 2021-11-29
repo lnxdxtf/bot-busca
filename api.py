@@ -20,10 +20,14 @@ server.add_middleware(
 
 @server.get('/buscar/notebook/lenovo')
 async def  buscar():
-    result = appBot().buscar()
-    return result
+    response = appBot().buscar()
+    return response
     
-    
+
+@server.get('/buscar/{marca}')
+async def buscarNote(marca:str):
+    response = appBot().getPages(marca)
+    return response
     
 @server.get('/')
 async def home():
